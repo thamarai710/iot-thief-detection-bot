@@ -1,0 +1,30 @@
+#define flame D0
+#define led D7
+
+void setup()
+{
+    Serial.begin(115200);
+
+    pinMode(led, OUTPUT);
+    pinMode(flame, INPUT);
+}
+
+void loop()
+{
+    int flamesta = digitalRead(flame);
+
+    if (flamesta == LOW)
+    {
+        digitalWrite(led, HIGH);
+        delay(100);
+
+        Serial.println("fire detected - run");
+    }
+    else
+    {
+        digitalWrite(led, LOW);
+        delay(100);
+
+        Serial.println("no fire detected - safe");
+    }
+}
